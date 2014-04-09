@@ -4,7 +4,39 @@
  * The Mall
  */
 
-//Initial variables. I named them for how they will be used.
+var goodDirection = false, //Indicates whether the user entered a usable direction in the prompt.
+	directionChosen; //The string representation of the direction the user enters.
+	
+var getWalkingDirection = function(direction) {
+		direction = direction.toLowerCase();
+		if (direction === "left" || direction === "l") {
+			directionChosen = "left";
+			console.log("The direction you chose is " + directionChosen + ".");
+			goodDirection = "true";
+		}
+		else if (direction === "right" || direction === "r") {
+			directionChosen = "right";
+			console.log("The direction you chose is " + directionChosen + ".");
+			goodDirection = "true";
+		}
+		else {
+			console.log("Please choose only left or right. You may also type 'l' or 'r'.");
+		}
+};
+
+do {
+ 	directionChosen = prompt("You have entered the mall. Which direction would you like to go?" , "Right or Left only!");
+ 	getWalkingDirection(directionChosen);
+} while (goodDirection === false);
+
+/*CODE REFERENCES
+ * Reference for "truncateDecimals" function
+ * Knowlson, N. (2012, Feb 10). Truncate (not round off) decimal numbers in javascript [Msg 3]. Message posted to 
+ * http://stackoverflow.com/questions/4912788/truncate-not-round-off-decimal-numbers-in-javascript
+ */
+
+/*OLD CODE
+ * //Initial variables. I named them for how they will be used.
 var goodName = "mike",
 	noMall = ' doesn\'t like the mall.',
 	moneyRequired = 20.00,
@@ -57,27 +89,4 @@ function truncateDecimals (num, digits) { //The function is called with two inte
 
     return parseFloat(finalResult); //Parses the result to a float and returns it
 }
-
-/*Reference for "truncateDecimals" function
- * Knowlson, N. (2012, Feb 10). Truncate (not round off) decimal numbers in javascript [Msg 3]. Message posted to 
- * http://stackoverflow.com/questions/4912788/truncate-not-round-off-decimal-numbers-in-javascript
- */
-
-/*
- * var getWalkingDirection = function(direction) {
- * 		direction = direction.toLowerCase();
- * 		if (direction === "left") {
- * 			directionChosen = "left";
- *			console.log("The direction you chose is " + directionChosen);
- * 			goodDirection = "true";
- * 		}
- * 		else if (direction === "right") {
- * 			directionChosen = "right";
- *			console.log("The direction you chose is " + directionChosen);
- * 			goodDirection = "true";
- * 		}
- * 		else {
- * 			console.log("Please choose only left or right.");
- * 		}
- * };
  */
