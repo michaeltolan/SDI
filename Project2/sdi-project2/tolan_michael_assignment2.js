@@ -1,7 +1,7 @@
 /* Michael Tolan
  * Apr 09, 2014
  * Project 2
- * ??????
+ * The Mall
  */
 
 //Initial variables. I named them for how they will be used.
@@ -61,4 +61,23 @@ function truncateDecimals (num, digits) { //The function is called with two inte
 /*Reference for "truncateDecimals" function
  * Knowlson, N. (2012, Feb 10). Truncate (not round off) decimal numbers in javascript [Msg 3]. Message posted to 
  * http://stackoverflow.com/questions/4912788/truncate-not-round-off-decimal-numbers-in-javascript
+ */
+
+/*
+ * var getWalkingDirection = function(direction) {
+ * 		direction = direction.toLowerCase();
+ * 		if (direction === "left") {
+ * 			directionChosen = "left";
+ *			console.log("The direction you chose is " + directionChosen);
+ * 			goodDirection = "true";
+ * 		}
+ * 		else if (direction === "right") {
+ * 			directionChosen = "right";
+ *			console.log("The direction you chose is " + directionChosen);
+ * 			goodDirection = "true";
+ * 		}
+ * 		else {
+ * 			console.log("Please choose only left or right.");
+ * 		}
+ * };
  */
