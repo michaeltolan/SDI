@@ -4,30 +4,33 @@
  * The Mall
  */
 
+//GLOBAL VARIABLES - named for their use
 var goodDirection = false, //Indicates whether the user entered a usable direction in the prompt.
 	directionChosen; //The string representation of the direction the user enters.
-	
-var getWalkingDirection = function(direction) {
-		direction = direction.toLowerCase();
-		if (direction === "left" || direction === "l") {
-			directionChosen = "left";
-			console.log("The direction you chose is " + directionChosen + ".");
-			goodDirection = "true";
-		}
-		else if (direction === "right" || direction === "r") {
-			directionChosen = "right";
-			console.log("The direction you chose is " + directionChosen + ".");
-			goodDirection = "true";
-		}
-		else {
-			console.log("Please choose only left or right. You may also type 'l' or 'r'.");
-		}
-};
 
-do {
+//MAIN BODY
+do { //Calls procedure function
  	directionChosen = prompt("You have entered the mall. Which direction would you like to go?" , "Right or Left only!");
  	getWalkingDirection(directionChosen);
 } while (goodDirection === false);
+
+//PROCEDURE FUNCTION - checks and sets walking direction in the mall
+var getWalkingDirection = function(direction) {
+		direction = direction.toLowerCase(); //Error catch - makes sure value is true despite different capitalizations.
+		if (direction === "left" || direction === "l") { //The use of 'or' allows more values to match true.
+			directionChosen = "left"; //Sets the global variable to be used later.
+			console.log("The direction you chose is " + directionChosen + "."); //Output A
+			goodDirection = "true"; //We have the varable we were looking for. Terminate the loop.
+		}
+		else if (direction === "right" || direction === "r") { //ditto
+			directionChosen = "right"; //ditto
+			console.log("The direction you chose is " + directionChosen + "."); //Output B
+			goodDirection = "true"; //ditto
+		}
+		else { //Error catch - if no acceptable value is entered, the message is shown and the loop continues.
+			console.log("Please choose only left or right. You may also type 'l' or 'r'.");
+		}
+};
 
 /*CODE REFERENCES
  * Reference for "truncateDecimals" function
