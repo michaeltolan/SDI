@@ -6,13 +6,8 @@
 
 //GLOBAL VARIABLES - named for their use
 var goodDirection = false, //Indicates whether the user entered a usable direction in the prompt.
-	directionChosen; //The string representation of the direction the user enters.
-
-//MAIN BODY
-do { //Calls procedure function
- 	directionChosen = prompt("You have entered the mall. Which direction would you like to go?" , "Right or Left only!");
- 	getWalkingDirection(directionChosen);
-} while (goodDirection === false);
+	directionChosen = "undefined", //The string representation of the direction the user enters.
+	doFirstOption; //Used with the confirm dialog to be used with the boolean function
 
 //PROCEDURE FUNCTION - checks and sets walking direction in the mall
 var getWalkingDirection = function(direction) {
@@ -32,6 +27,28 @@ var getWalkingDirection = function(direction) {
 		}
 };
 
+//MAIN BODY
+do { //Calls procedure function
+ 	directionChosen = prompt("You have entered the mall. Which direction would you like to go?" , "Right or Left only!");
+ 	getWalkingDirection(directionChosen);
+} while (goodDirection === false);
+
+if (directionChosen === "left") { //Block of conditionals that determines the order of the boolean function.
+	doFirstOption = confirm("Going left means you encounter the food court before the shops. Do you want to eat first?");
+}
+else if (directionChosen === "right") {
+	doFirstOption = confirm("Going right means you encounter the shops before the food court. Do you want to shop first?");
+}
+else { //Used to make sure no unacceptable variables made it past the first loop.
+	console.log("ERROR! YOUR PROCEDURE FUNCTION OR DO-WHILE LOOP IS FAILING!");
+}
+
+
+
+//BOOLEAN FUNCTION - you went 'x' direction, that means you want to 'y' first.
+//var firstAction = function();
+
+
 /*CODE REFERENCES
  * Reference for "truncateDecimals" function
  * Knowlson, N. (2012, Feb 10). Truncate (not round off) decimal numbers in javascript [Msg 3]. Message posted to 
@@ -39,7 +56,8 @@ var getWalkingDirection = function(direction) {
  */
 
 /*OLD CODE
- * //Initial variables. I named them for how they will be used.
+ * (from Project 1)
+//Initial variables. I named them for how they will be used.
 var goodName = "mike",
 	noMall = ' doesn\'t like the mall.',
 	moneyRequired = 20.00,
@@ -92,4 +110,4 @@ function truncateDecimals (num, digits) { //The function is called with two inte
 
     return parseFloat(finalResult); //Parses the result to a float and returns it
 }
- */
+*/
