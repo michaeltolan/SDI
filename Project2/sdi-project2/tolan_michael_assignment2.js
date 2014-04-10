@@ -8,7 +8,9 @@
 var goodDirection = false, //Indicates whether the user entered a usable direction in the prompt.
 	directionChosen = "undefined", //The string representation of the direction the user enters.
 	doFirstOption, //Used with the confirm dialog to be used with the boolean function.
-	firstAction; //Decision from boolean function to be passed on to other functions.
+	firstActionEat, //Decision from boolean function to be passed on to other functions.
+	totalMoney = 100, //You brought a little bit of money.
+	finalStatement;
 
 //PROCEDURE FUNCTION - checks and sets walking direction in the mall
 var getWalkingDirection = function(direction) {
@@ -35,23 +37,57 @@ var firstAction = function(direction, firstOption) {
 		if (direction === "left" && firstOption === true) {
 			console.log("OK. Let's eat first.");
 			thisFunctionLoops = false; //Got desired outcome. No need to keep looping.
+			return true;
 		}
 		else if (direction === "left" && firstOption === false) {
 			console.log("Maybe we'll have time to eat later. Let's shop first.");
 			thisFunctionLoops = false; //Got desired outcome. No need to keep looping.
+			return false;
 		}
 		else if (direction === "right" && firstOption === true) {
 			console.log("OK. Let's shop first.");
 			thisFunctionLoops = false; //Got desired outcome. No need to keep looping.
+			return false;
 		}
 		else if (direction === "right" && firstOption === false) {
 			console.log("Maybe we'll have time to shop later. Let's eat first.");
 			thisFunctionLoops = false; //Got desired outcome. No need to keep looping.
+			return true;
 		}
 		else {
 			console.log("I don't know how you got past all my error catches so far. Now you're stuck in an infinite loop. MUAWHAHAHA!");
 		}
 	}
+};
+
+//NUMBER FUNCTION - Let's spend some money
+var spendMoney = function(money) {
+	for (var i = money; i < 10; i++) { //The loop is impractical to use here. It only runs once.
+		if (firstActionEat === true) {
+			console.log("You eat some food. What kind is not important. You spent $20.");
+			money = money - 20;
+			console.log("You have $" + money + " dollars left for shopping.");
+			i = 1;
+		}
+		else if (firstActionEat === false) {
+			console.log("You bought a book for $15.");
+			money = money - 15;
+			console.log("Then you bought a phone case for $25.");
+			money = money - 25;
+			console.log("Finally, you spent the rest on clothes.");
+			money = money - money;
+			i = 0;
+		}
+		else {
+			console.log("You made it to the number function, but something went wrong here.");
+		}
+	};
+	return money;
+};
+
+//STRING FUNCTION
+var stringFunction = function(firstOption, money) {
+	console.log("When you entered the mall, you went " + directionCosen + " first.");
 };
 
 //MAIN BODY
@@ -70,7 +106,8 @@ else { //Used to make sure no unacceptable variables made it past the first loop
 	console.log("ERROR! YOUR PROCEDURE FUNCTION OR DO-WHILE LOOP IS FAILING!");
 }
 
-firstAction(directionChosen, doFirstOption);
+firstActionEat = firstAction(directionChosen, doFirstOption);
+totalMoney = spendMoney(totalMoney);
 
 /*CODE REFERENCES
  * Reference for "truncateDecimals" function
