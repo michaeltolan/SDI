@@ -10,7 +10,7 @@ var goodDirection = false, //Indicates whether the user entered a usable directi
 	doFirstOption, //Used with the confirm dialog to be used with the boolean function.
 	firstActionEat, //Decision from boolean function to be passed on to other functions.
 	totalMoney = 100, //You brought a little bit of money.
-	finalStatement;
+	finalStatement; //Concatinized by the string function and used as the final output.
 
 //PROCEDURE FUNCTION - checks and sets walking direction in the mall
 var getWalkingDirection = function(direction) {
@@ -62,7 +62,7 @@ var firstAction = function(direction, firstOption) {
 
 //NUMBER FUNCTION - Let's spend some money
 var spendMoney = function(money) {
-	for (var i = money; i < 10; i++) { //The loop is impractical to use here. It only runs once.
+	for (var i = money; i > 10; i++) { //The loop is impractical to use here. It only runs once.
 		if (firstActionEat === true) {
 			console.log("You eat some food. What kind is not important. You spent $20.");
 			money = money - 20;
@@ -87,7 +87,8 @@ var spendMoney = function(money) {
 
 //STRING FUNCTION
 var stringFunction = function(firstOption, money) {
-	console.log("When you entered the mall, you went " + directionCosen + " first.");
+	var temporaryString = "When you entered the mall, you went " + directionChosen + " first. Saying you chose to eat first is " + firstOption + ". And you have $" + money + " left over.";
+	return temporaryString;
 };
 
 //MAIN BODY
@@ -106,8 +107,12 @@ else { //Used to make sure no unacceptable variables made it past the first loop
 	console.log("ERROR! YOUR PROCEDURE FUNCTION OR DO-WHILE LOOP IS FAILING!");
 }
 
-firstActionEat = firstAction(directionChosen, doFirstOption);
-totalMoney = spendMoney(totalMoney);
+firstActionEat = firstAction(directionChosen, doFirstOption); //Call the boolean function
+totalMoney = spendMoney(totalMoney); //Call the number function.
+firstActionEat = firstActionEat.toString(); //Make a couple strings
+totalMoney = totalMoney.toString();
+finalStatement = stringFunction(firstActionEat, totalMoney); //Call the string function
+console.log(finalStatement); //Final output
 
 /*CODE REFERENCES
  * Reference for "truncateDecimals" function
