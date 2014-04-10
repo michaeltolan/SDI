@@ -7,7 +7,8 @@
 //GLOBAL VARIABLES - named for their use
 var goodDirection = false, //Indicates whether the user entered a usable direction in the prompt.
 	directionChosen = "undefined", //The string representation of the direction the user enters.
-	doFirstOption; //Used with the confirm dialog to be used with the boolean function
+	doFirstOption, //Used with the confirm dialog to be used with the boolean function.
+	firstAction; //Decision from boolean function to be passed on to other functions.
 
 //PROCEDURE FUNCTION - checks and sets walking direction in the mall
 var getWalkingDirection = function(direction) {
@@ -27,6 +28,32 @@ var getWalkingDirection = function(direction) {
 		}
 };
 
+//BOOLEAN FUNCTION - you went 'x' direction, that means you want to 'y' first.
+var firstAction = function(direction, firstOption) {
+	var thisFunctionLoops = true;
+	while (thisFunctionLoops === true) {
+		if (direction === "left" && firstOption === true) {
+			console.log("OK. Let's eat first.");
+			thisFunctionLoops = false; //Got desired outcome. No need to keep looping.
+		}
+		else if (direction === "left" && firstOption === false) {
+			console.log("Maybe we'll have time to eat later. Let's shop first.");
+			thisFunctionLoops = false; //Got desired outcome. No need to keep looping.
+		}
+		else if (direction === "right" && firstOption === true) {
+			console.log("OK. Let's shop first.");
+			thisFunctionLoops = false; //Got desired outcome. No need to keep looping.
+		}
+		else if (direction === "right" && firstOption === false) {
+			console.log("Maybe we'll have time to shop later. Let's eat first.");
+			thisFunctionLoops = false; //Got desired outcome. No need to keep looping.
+		}
+		else {
+			console.log("I don't know how you got past all my error catches so far. Now you're stuck in an infinite loop. MUAWHAHAHA!");
+		}
+	}
+};
+
 //MAIN BODY
 do { //Calls procedure function
  	directionChosen = prompt("You have entered the mall. Which direction would you like to go?" , "Right or Left only!");
@@ -43,11 +70,7 @@ else { //Used to make sure no unacceptable variables made it past the first loop
 	console.log("ERROR! YOUR PROCEDURE FUNCTION OR DO-WHILE LOOP IS FAILING!");
 }
 
-
-
-//BOOLEAN FUNCTION - you went 'x' direction, that means you want to 'y' first.
-//var firstAction = function();
-
+firstAction(directionChosen, doFirstOption);
 
 /*CODE REFERENCES
  * Reference for "truncateDecimals" function
