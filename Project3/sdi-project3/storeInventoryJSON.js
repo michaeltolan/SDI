@@ -50,7 +50,7 @@ var storeInventoryJSON = {
 			"table",
 			"desk"
 		],
-		"hygene": [
+		"hygiene": [
 			"shampoo",
 			"toothpaste",
 			"deoderant"
