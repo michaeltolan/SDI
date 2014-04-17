@@ -59,7 +59,7 @@ var addItem = function(json, item, store, department) {
 					json.walmart.auto.push(item);
 					listLength++;
 					break;
-				default : //console.log("first switch failure.");
+				default :
 			}
 		case "target":
 			switch (department) {
@@ -75,7 +75,7 @@ var addItem = function(json, item, store, department) {
 					json.target.baby.push(item);
 					listLength++;
 					break;
-				default : //console.log("second switch failure.");
+				default :
 			}
 		case "sams":
 			switch (department) {
@@ -91,9 +91,9 @@ var addItem = function(json, item, store, department) {
 					json.sams.hygiene.push(item);
 					listLength++;
 					break;
-				default : //console.log("third switch failure.");
+				default : 
 			}
-		default : //console.log("overall switch failure.");
+		default : 
 	}
 };
 
@@ -116,7 +116,7 @@ var removeItem = function(json, item, store, department) {
 					json.walmart.auto.splice(spot);
 					listLength--;
 					break;
-				default : //console.log("first switch failure.");
+				default : 
 			}
 		case "target":
 			switch (department) {
@@ -135,7 +135,7 @@ var removeItem = function(json, item, store, department) {
 					json.target.baby.splice(spot);
 					listLength--;
 					break;
-				default : //console.log("second switch failure.");
+				default : 
 			}
 		case "sams":
 			switch (department) {
@@ -154,9 +154,9 @@ var removeItem = function(json, item, store, department) {
 					json.sams.hygiene.splice(spot);
 					listLength--;
 					break;
-				default : //console.log("third switch failure.");
+				default : 
 			}
-		default : //console.log("overall switch failure.");
+		default : 
 	}
 };
 
@@ -207,9 +207,6 @@ reverseList(shoppingList);
 console.log("Can I get it all in one place?");
 console.log("For the sake of the code, we can not.");
 var allInOnePlace = false;
-var needWalmart = true;
-var needTarget = true;
-var needSams = true;
 
 console.log("Let's put everything in our list according to the store. These are the stores");
 showJSON(shoppingListJSON);
@@ -258,3 +255,59 @@ moneyOnHand = boughtSomething(moneyOnHand);
 console.log("We have $" + moneyOnHand + " left.");
 console.log("We have " + listLength + " items left. Here they are.");
 showJSON(shoppingListJSON);
+
+console.log("We're at Target right now.");
+console.log("I found the " + shoppingList[4] + ", let's cross that off.");
+removeItem(shoppingListJSON, shoppingList[4], "target", "apparel");
+moneyOnHand = boughtSomething(moneyOnHand);
+console.log("We have $" + moneyOnHand + " left.");
+console.log("We have " + listLength + " items left. Here they are.");
+showJSON(shoppingListJSON);
+console.log("I found the " + shoppingList[5] + ", let's cross that off.");
+removeItem(shoppingListJSON, shoppingList[5], "target", "apparel");
+moneyOnHand = boughtSomething(moneyOnHand);
+console.log("We have $" + moneyOnHand + " left.");
+console.log("We have " + listLength + " items left. Here they are.");
+showJSON(shoppingListJSON);
+console.log("I found the " + shoppingList[6] + ", let's cross that off.");
+removeItem(shoppingListJSON, shoppingList[6], "target", "toys");
+moneyOnHand = boughtSomething(moneyOnHand);
+console.log("We have $" + moneyOnHand + " left.");
+console.log("We have " + listLength + " items left. Here they are.");
+showJSON(shoppingListJSON);
+
+console.log("We're at Sams right now.");
+console.log("I found the " + shoppingList[0] + ", let's cross that off.");
+removeItem(shoppingListJSON, shoppingList[0], "sams", "outdoor");
+moneyOnHand = boughtSomething(moneyOnHand);
+console.log("We have $" + moneyOnHand + " left.");
+console.log("We have " + listLength + " items left. Here they are.");
+showJSON(shoppingListJSON);
+console.log("I found the " + shoppingList[1] + ", let's cross that off.");
+removeItem(shoppingListJSON, shoppingList[1], "sams", "hygiene");
+moneyOnHand = boughtSomething(moneyOnHand);
+console.log("We have $" + moneyOnHand + " left.");
+console.log("We have " + listLength + " items left. Here they are.");
+showJSON(shoppingListJSON);
+console.log("I found the " + shoppingList[2] + ", let's cross that off.");
+removeItem(shoppingListJSON, shoppingList[2], "sams", "hygiene");
+moneyOnHand = boughtSomething(moneyOnHand);
+console.log("We have $" + moneyOnHand + " left.");
+console.log("We have " + listLength + " items left. Here they are.");
+showJSON(shoppingListJSON);
+
+console.log("All done, let's go camping.");
+var havingFun = true;
+while(havingFun === true) {
+	console.log("We're having fun.");
+	for (var i=0; i<shoppingList.length; i++) {
+		console.log("We've used some supplies.");
+		shoppingList.splice(i);
+	}
+	showList(shoppingList);
+	if (listLength === 0) {
+		console.log("We're not having fun anymore.");
+		havingFun = false;
+	}
+}
+console.log("Goodbye World!");
