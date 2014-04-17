@@ -6,7 +6,8 @@
 
 //GLOBAL VARIABLES
 var shoppingList = [],
-	listLength = 0;
+	listLength = 0,
+	moneyOnHand = 100;
 
 //FUNCTIONS
 var showJSON = function(json) {
@@ -106,44 +107,52 @@ var removeItem = function(json, item, store, department) {
 					listLength--;
 					break;
 				case "tech" :
-					json.walmart.tech.push(item);
-					listLength++;
+					var spot = json.walmart.tech.indexOf(item);
+					json.walmart.tech.splice(spot);
+					listLength--;
 					break;
 				case "auto" :
-					json.walmart.auto.push(item);
-					listLength++;
+					var spot = json.walmart.auto.indexOf(item);
+					json.walmart.auto.splice(spot);
+					listLength--;
 					break;
 				default : //console.log("first switch failure.");
 			}
 		case "target":
 			switch (department) {
 				case "apparel" :
-					json.target.apparel.push(item);
-					listLength++;
+					var spot = json.target.apparel.indexOf(item);
+					json.target.apparel.splice(spot);
+					listLength--;
 					break;
 				case "toys" :
-					json.target.toys.push(item);
-					listLength++;
+					var spot = json.target.toys.indexOf(item);
+					json.target.toys.splice(spot);
+					listLength--;
 					break;
 				case "baby" :
-					json.target.baby.push(item);
-					listLength++;
+					var spot = json.target.baby.indexOf(item);
+					json.target.baby.splice(spot);
+					listLength--;
 					break;
 				default : //console.log("second switch failure.");
 			}
 		case "sams":
 			switch (department) {
 				case "outdoor" :
-					json.sams.outdoor.push(item);
-					listLength++;
+					var spot = json.sams.outdoor.indexOf(item);
+					json.sams.outdoor.splice(spot);
+					listLength--;
 					break;
 				case "home" :
-					json.sams.home.push(item);
-					listLength++;
+					var spot = json.sams.home.indexOf(item);
+					json.sams.home.splice(spot);
+					listLength--;
 					break;
 				case "hygiene" :
-					json.sams.hygiene.push(item);
-					listLength++;
+					var spot = json.sams.hygiene.indexOf(item);
+					json.sams.hygiene.splice(spot);
+					listLength--;
 					break;
 				default : //console.log("third switch failure.");
 			}
@@ -180,8 +189,13 @@ var reverseList = function(list) {
 	return reversed;
 };
 
+var boughtSomething = function(money) {
+	money = money - 10;
+	return money;
+};
+
 //MAIN BODY
-console.log("I'm going camping, what do I need?");
+console.log("I have $" + moneyOnHand + ". I'm going camping, what do I need?");
 shoppingList.push("tent", "tissue", "deoderant", "oil", "shirt", "shoes", "frisbee", "sandwiches");
 showList(shoppingList);
 
@@ -229,9 +243,18 @@ else {
 }
 
 console.log("As we finish an item, It will be removed from the JSON but remain in our main list.");
+console.log("Let's say for the sake of this project that everythinng costs $10.");
 
 console.log("We're at Walmart right now.");
 console.log("I found the " + shoppingList[7] + ", let's cross that off.");
 removeItem(shoppingListJSON, shoppingList[7], "walmart", "groceries");
+moneyOnHand = boughtSomething(moneyOnHand);
+console.log("We have $" + moneyOnHand + " left.");
+console.log("We have " + listLength + " items left. Here they are.");
+showJSON(shoppingListJSON);
+console.log("I found the " + shoppingList[3] + ", let's cross that off.");
+removeItem(shoppingListJSON, shoppingList[3], "walmart", "auto");
+moneyOnHand = boughtSomething(moneyOnHand);
+console.log("We have $" + moneyOnHand + " left.");
 console.log("We have " + listLength + " items left. Here they are.");
 showJSON(shoppingListJSON);
