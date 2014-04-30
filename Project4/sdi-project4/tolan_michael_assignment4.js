@@ -110,7 +110,13 @@ var fuzzyMatch = function(num1, num2, percent) {
 };
 
 var dateDiff = function(date1, date2, hORd) {
-	return ?;
+	var difference;
+	
+	if(date1 > date2) difference = date1 - date2;
+	else difference = date2 - date1;
+	if(hORd === "h") difference = difference / 3600000;
+	else if(hORd === "d") difference = difference / 86400000;
+	return difference;
 };
 
 var toNumber = function(str) {
