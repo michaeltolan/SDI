@@ -157,11 +157,11 @@ var nextHighest = function(array, num) {
 };
 
 var arrayNumSum = function(array) {
+	var total = 0;
+	
+	for(var i=0; i<array.length; i++) {
+		if(isNaN(array[i])) ;
+		else if (typeof array[i] === "number") total = total+array[i];
+	}
 	return total;
 };
-
-var sortArray = function(array, key) {
-	return array;
-};
-
-
