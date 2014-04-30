@@ -95,7 +95,18 @@ var truncateDecimal = function(number, decimal) {
 };
 
 var fuzzyMatch = function(num1, num2, percent) {
-	return ?;
+	var temp;
+	
+	if (num1 > num2) {
+		temp = (num1 - num2) * 10;
+		if (temp <= percent) return true;
+		else return false;
+	}
+	else {
+		temp = (num2 - num1) * 10;
+		if (temp <= percent) return true;
+		else return false;
+	}
 };
 
 var dateDiff = function(date1, date2, hORd) {
