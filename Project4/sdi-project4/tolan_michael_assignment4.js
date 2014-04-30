@@ -88,6 +88,9 @@ var replaceSeparator = function(str, sep1, sep2) {
 //NUMBER FUNCTIONS
 
 var truncateDecimal = function(number, decimal) {
+	number = number+"";
+	number = number.substr(0, (number.indexOf(".") + decimal+1));
+	number = parseFloat(number);
 	return number;
 };
 
