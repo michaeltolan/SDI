@@ -53,7 +53,30 @@ var isURL = function(url) {
 };
 
 var titleCase = function(str) {
-	return str;
+	var sentence = "",
+		word,
+		char1,
+		char2;
+	
+	do {
+		if(str.indexOf(" ") === -1) {
+			char1 = str.charAt(0);
+			char2 = char1.toLocaleUpperCase();
+			str = str.replace(char1, char2);
+			sentence = sentence.concat(str);
+			str = "";
+		}
+		else {
+			word = str.substr(0, str.indexOf(" "));
+			char1 = word.charAt(0);
+			char2 = char1.toLocaleUpperCase();
+			word = word.replace(char1, char2);
+			sentence = sentence.concat(word + " ");
+			str = str.substr(word.length + 1, str.length);
+		}
+	} while (str.length > 1);
+	
+	return sentence;
 };
 
 var replaceSeparator = function(str, sep1, sep2) {
