@@ -135,7 +135,25 @@ var toNumber = function(str) {
 //ARRAY FUNCTIONS
 
 var nextHighest = function(array, num) {
-	return num;
+	var answer;
+		temp = 0;
+		newArray = [];
+	
+	for(var i=0; i<array.length; i++) {
+		if (array[i] > num) {
+			newArray.push(array[i]);
+		}
+	}
+	
+	for(var i=0; i<newArray.length; i++) {
+		if (newArray.length === 1) answer = newArray[0];
+		else if (i === 0) temp = newArray[i];
+		else {
+			if (newArray[i] < temp) answer = newArray[i];
+			else answer = temp;
+		}
+	}
+	return answer;
 };
 
 var arrayNumSum = function(array) {
