@@ -42,7 +42,14 @@ var isEmailAddress = function(emailAddress) {
 };
 
 var isURL = function(url) {
-	return false;
+	var prefix1,
+		prefix2;
+	
+	prefix1 = url.substr(0,7);
+	prefix2 = url.substr(0,8);
+	if (prefix1 === "http://" && url.indexOf(".") !== -1) return true;  //Use of "NOT" conditional. Project 2.
+	else if (prefix2 === "https://" && url.indexOf(".") !== -1) return true;
+	else return false;
 };
 
 var titleCase = function(str) {
