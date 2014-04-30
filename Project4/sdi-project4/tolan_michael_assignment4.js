@@ -80,6 +80,7 @@ var titleCase = function(str) {
 };
 
 var replaceSeparator = function(str, sep1, sep2) {
+	while(str.indexOf(sep1) !== -1) str = str.replace(sep1, sep2);
 	return str;
 };
 
