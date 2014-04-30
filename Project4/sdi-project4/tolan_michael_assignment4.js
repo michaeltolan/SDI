@@ -120,7 +120,15 @@ var dateDiff = function(date1, date2, hORd) {
 };
 
 var toNumber = function(str) {
-	return num;
+	var num = parseFloat(str),
+		nan = false;
+	
+	for (var i=0; i<str.length; i++){
+		var chara = str.charAt(i);
+		if(isNaN(chara) && chara !== "." ) nan = true;
+	}
+	if (nan === false) return num;
+	else return "The value given is not a number.";
 };
 
 //-------------------------------------------------------------------------------//
