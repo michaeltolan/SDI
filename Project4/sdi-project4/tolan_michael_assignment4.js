@@ -33,7 +33,12 @@ var isPhoneNumber = function(phoneNumber) {
 };
 
 var isEmailAddress = function(emailAddress) {
-	return false;
+	var at = emailAddress.indexOf("@"),
+		dot = emailAddress.lastIndexOf(".");
+		
+	if( at === -1 || dot === -1 ) return false;
+	else if(at > dot) return false;
+	else return true;
 };
 
 var isURL = function(url) {
